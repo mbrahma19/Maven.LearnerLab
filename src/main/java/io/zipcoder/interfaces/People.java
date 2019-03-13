@@ -1,31 +1,32 @@
 package io.zipcoder.interfaces;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class People {
+public abstract class People<T extends Person> {
 
-    private List<Person> personList;
+    private List<T> personList;
 
     public People(){
-        personList = new ArrayList<Person>();
+        personList = new ArrayList<T>();
     }
 
-    public People(Person[] persons){//TODO: Ask why Arrays.asList(persons) creates an UnsupportedOperationExceptions;
-        personList = new ArrayList<Person>(Arrays.asList(persons));
+    public People(T[] persons){//TODO: Ask why Arrays.asList(persons) creates an UnsupportedOperationExceptions;
+        personList = new ArrayList<T>(Arrays.asList(persons));
     }
 
-    public void add(Person person){
+    public void add(T person){
         personList.add(person);
     }
 
-    public void remove(Person person){
+    public void remove(T person){
         personList.remove(person);
     }
 
     public void remove(Long id){
-        Person person = findById(id);
+        T person = findById(id);
         remove(person);
     }
 
@@ -37,13 +38,13 @@ public class People {
         return personList.size();
     }
 
-    public Person[] getArray(){
-        return personList.toArray(new Person[personList.size()]);
+    public T[] getArray(){
+        return personList.toArray((T[]) Array.newInstance(personList.getClass().getComponentType(), personList.size()));
     }
 
-    public Person findById(Long id){
-        Person person = null;
-        for(Person p : personList){
+    public T findById(Long id){
+        T person = null;
+        for(T p : personList){
             if(id.equals(p.getId())){
                 person = p;
                 break;
