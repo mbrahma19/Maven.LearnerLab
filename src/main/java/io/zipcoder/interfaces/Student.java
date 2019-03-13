@@ -16,4 +16,8 @@ public class Student extends Person implements Learner{
     public double getTotalStudyTime() {
         return totalStudyTime;
     }
+
+    public void setTotalStudyTime(Double hours){
+        totalStudyTime = hours;
+    }
 }

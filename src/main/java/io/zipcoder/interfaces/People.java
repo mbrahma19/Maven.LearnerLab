@@ -1,6 +1,5 @@
 package io.zipcoder.interfaces;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,9 +37,14 @@ public abstract class People<T extends Person> {
         return personList.size();
     }
 
-    public T[] getArray(){
-        return personList.toArray((T[]) Array.newInstance(personList.getClass().getComponentType(), personList.size()));
+    public List<T> getList() {
+        return personList;
     }
+
+    public abstract T[] getArray();
+//    {
+//        return personList.toArray((T[]) Array.newInstance(personList.getClass().getComponentType(), personList.size()));
+//    }
 
     public T findById(Long id){
         T person = null;

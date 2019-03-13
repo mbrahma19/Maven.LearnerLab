@@ -9,7 +9,7 @@ public class InstructorsTest {
     public void constructorTest(){
         //given
         Instructors instructors = Instructors.getInstance();
-        Integer expected = 5;
+        Integer expected = 6;
         //when
         Integer actual = instructors.getCount();
         //then

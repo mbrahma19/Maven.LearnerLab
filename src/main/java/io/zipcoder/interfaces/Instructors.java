@@ -1,14 +1,14 @@
 package io.zipcoder.interfaces;
 
-public final class Instructors extends People {
+public final class Instructors extends People<Instructor> {
 
     private static Instructors INSTANCE = new Instructors();
 
     private Instructors(){
-        for(long i = 0l; i < 5l ; i++){
-            Instructor instructor = new Instructor(i+1);
-            add(instructor);
-        }
+    }
+
+    public Instructor[] getArray() {
+        return getList().toArray(new Instructor[getList().size()]);
     }
 
     public static Instructors getInstance(){

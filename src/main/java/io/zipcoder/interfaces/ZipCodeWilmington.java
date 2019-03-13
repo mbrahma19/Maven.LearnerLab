@@ -10,17 +10,15 @@ public class ZipCodeWilmington {
         return zcw;
     }
 
-    private ZipCodeWilmington(){
-
-    }
+    private ZipCodeWilmington(){}
 
     public void hostLecture(Teacher teacher, double numberOfHours){
-        Learner[] learners = (Learner[]) students.getArray();
-        teacher.lecture(learners,numberOfHours);
+        teacher.lecture(students.getArray(),numberOfHours);
     }
 
     public void hostLecture(long id, double numberOfHours){
-        instructors.findById(id);
-
+        Instructor instructor = instructors.findById(id);
+        instructor.lecture(students.getArray(),numberOfHours);
     }
+
 }
